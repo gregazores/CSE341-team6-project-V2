@@ -1,7 +1,7 @@
 const TvShowSchema = require('../models/Tvshows')
 const mongoose = require("mongoose");
 const {getAll, getSingle, createSingle, updateSingle, deleteSingle} = require("./helper")
-//const {smoothieSchema, userSchema} = require('../library/validationSchemas')
+const {gameSchema, movieSchema, showSchema} = require('../models/validationSchemas')
 
 let TvShowController = function(endpoint) {
     this.endpoint = endpoint
@@ -24,7 +24,7 @@ TvShowController.prototype.createSingleShow = async function(req, res, next) {
         return;
     }
 
-    const showEntries = await TvShowSchema.validateAsync(req.body)
+    const showEntries = await showSchema.validateAsync(req.body)
 
     if (showEntries.error) {
       res.status(400).send({ message: showEntries.error });
@@ -49,14 +49,14 @@ TvShowController.prototype.updateSingleShow = async function(req, res, next) {
         return;
     }
 
-    const showEntries = await TvShowSchema.validateAsync(req.body)
+    const showEntries = await showSchema.validateAsync(req.body)
 
     if (showEntries.error) {
       res.status(400).send({ message: showEntries.error });
       return;
     }
 
-    
+
     const TvShowType = mongoose.model(this.endpoint, TvShowSchema, this.endpoint);
     const show = ({
         title: req.body.title,

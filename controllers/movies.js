@@ -1,7 +1,7 @@
 const MovieSchema = require('../models/Movies')
 const mongoose = require("mongoose");
 const {getAll, getSingle, createSingle, updateSingle, deleteSingle} = require("./helper")
-//const {smoothieSchema, userSchema} = require('../library/validationSchemas')
+const {gameSchema, movieSchema, showSchema} = require('../models/validationSchemas')
 
 let MovieController = function(endpoint) {
     this.endpoint = endpoint
@@ -24,7 +24,7 @@ MovieController.prototype.createSingleMovie = async function(req, res, next) {
         return;
     }
 
-    const movieEntries = await MovieSchema.validateAsync(req.body)
+    const movieEntries = await movieSchema.validateAsync(req.body)
 
     if (movieEntries.error) {
       res.status(400).send({ message: movieEntries.error });
@@ -49,7 +49,7 @@ MovieController.prototype.updateSingleMovie = async function(req, res, next) {
         return;
     }
 
-    const movieEntries = await MovieSchema.validateAsync(req.body)
+    const movieEntries = await movieSchema.validateAsync(req.body)
 
     if (movieEntries.error) {
       res.status(400).send({ message: movieEntries.error });

@@ -1,7 +1,7 @@
 const GameSchema = require('../models/Games')
 const mongoose = require("mongoose");
 const {getAll, getSingle, createSingle, updateSingle, deleteSingle} = require("./helper")
-//const {smoothieSchema, userSchema} = require('../library/validationSchemas')
+const {gameSchema, movieSchema, showSchema} = require('../models/validationSchemas')
 
 let GamesController = function(endpoint) {
     this.endpoint = endpoint
@@ -24,7 +24,7 @@ GamesController.prototype.createSingleGame = async function(req, res, next) {
         return;
     }
 
-    const gameEntries = await GameSchema.validateAsync(req.body)
+    const gameEntries = await gameSchema.validateAsync(req.body)
 
     if (gameEntries.error) {
       res.status(400).send({ message: gameEntries.error });
@@ -52,13 +52,13 @@ GamesController.prototype.updateSingleGame = async function(req, res, next) {
         return;
     }
 
-    const gameEntries = await GameSchema.validateAsync(req.body)
+    const gameEntries = await gameSchema.validateAsync(req.body)
 
     if (gameEntries.error) {
       res.status(400).send({ message: gameEntries.error });
       return;
     }
-    
+
     const GameType = mongoose.model(this.endpoint, GameSchema, this.endpoint);
     const game = ({
         title: req.body.title,

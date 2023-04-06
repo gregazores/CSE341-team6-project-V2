@@ -15,18 +15,18 @@ GET http://localhost:8000/games/642e87c6f3646fe102160e3c
 POST http://localhost:8000/games
 content-type: application/json
 
-{"title":"Inscryption","size":"3 GB","multiplayer":"false","controllerSupport":"false","developer":"Daniel Mullins Games","publisher":"Devolver Digital","releaseDate":"Oct 19, 2021","platform":"PC"}
+{"title":"Inscffffryption","size":"3 GB","multiplayer":"false","controllerSupport":"false","developer":"Daniel Mullins Games","publisher":"Devolver Digital","releaseDate":"Oct 19, 2021","platform":"PC"}
 
 ###
 
-PUT http://localhost:8000/games/642e87c6f3646fe102160e3c
+PUT http://localhost:8000/games/642f0244e8011981b522975f
 content-type: application/json
 
 {"title":"Inscryption","size":"3 GB","multiplayer":"false","controllerSupport":"false","developer":"Daniel Mullins Games","publisher":"Devolver Digital","releaseDate":"Oct 19, 2021","platform":"PC"}
 
 ###
 
-DELETE http://localhost:8000/games/642e87c6f3646fe102160e3c
+DELETE http://localhost:8000/games/642f0244e8011981b522975f
 
 
 ###
@@ -44,7 +44,7 @@ GET http://localhost:8000/movies/642e964a3e886ba6617db1dc
 POST http://localhost:8000/movies
 content-type: application/json
 
-{"title":"La La Land","releaseYear":"2016","genre":"Drama","rating":"PG-13","director":"Damien Chazelle"}
+{"title":"La La fffLand","releaseYear":"2016","genre":"Drama","rating":"PG-13","director":"Damien Chazelle"}
 
 ###
 
