@@ -6,8 +6,8 @@ const doc = {
       version: '0.0.1',
       description: 'REST CONTACTS API (WDD341) FINAL PROJECT'
     },
-    host: 'localhost:8000',
-    schemes: ['http', 'https']
+    host: 'cse341-team6-project-v2.onrender.com',
+    schemes: ['https', 'http']
 };
 
 const outputFile = './swagger.json';

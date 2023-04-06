@@ -5,11 +5,11 @@
     "version": "0.0.1",
     "description": "REST CONTACTS API (WDD341) FINAL PROJECT"
   },
-  "host": "localhost:8000",
+  "host": "cse341-team6-project-v2.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "httpp"
   ],
   "tags": [
         {
