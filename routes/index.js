@@ -3,8 +3,8 @@ const router = express.Router();
 const swaggerRouter = require('./swagger');
 
 router.use('/', swaggerRouter);
-// router.use('/movies', require('./movies'))
-// router.use('/shows', require('./tv_shows'))
+router.use('/movies', require('./movies'))
+router.use('/shows', require('./tv_shows'))
 router.use('/games', require('./games'))
 // router.use('/users', require('./users'))
 // router.use('/auth', require('./auth'));

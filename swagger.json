@@ -8,7 +8,26 @@
   "host": "localhost:8000",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
+  ],
+  "tags": [
+        {
+          "name": "GAMES",
+          "description": "Requests using the GAMES endpoint"
+        },
+        {
+            "name": "MOVIES",
+            "description": "Requests using the MOVIES endpoint"
+        },
+        {
+            "name": "TV SHOWS",
+            "description": "Requests using the TV SHOWS endpoint"
+        },
+        {
+            "name": "USERS",
+            "description": "Requests using the USERS endpoint"
+        }
   ],
   "paths": {
     "/": {
@@ -31,6 +50,7 @@
     },
     "/movies/": {
       "get": {
+        "tags": ["MOVIES"],
         "description": "",
         "produces": [
           "application/json"
@@ -46,31 +66,15 @@
         }
       },
       "post": {
+        "tags": ["MOVIES"],
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "releaseYear": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "director": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                }
+              "$ref": "#/components/schemas/movies"
               }
-            }
           }
         ],
         "responses": {
@@ -88,6 +92,7 @@
     },
     "/movies/{id}": {
       "get": {
+        "tags": ["MOVIES"],
         "description": "",
         "produces": [
           "application/json"
@@ -110,6 +115,7 @@
         }
       },
       "put": {
+        "tags": ["MOVIES"],
         "description": "",
         "parameters": [
           {
@@ -122,24 +128,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "releaseYear": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "director": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                }
-              }
+                  "$ref": "#/components/schemas/movies"
             }
           }
         ],
@@ -159,6 +148,7 @@
         }
       },
       "delete": {
+        "tags": ["MOVIES"],
         "description": "",
         "parameters": [
           {
@@ -183,6 +173,7 @@
     },
     "/shows/": {
       "get": {
+        "tags": ["TV SHOWS"],
         "description": "",
         "produces": [
           "application/json"
@@ -198,30 +189,14 @@
         }
       },
       "post": {
+        "tags": ["TV SHOWS"],
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "seasonReleaseYear": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "season": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/components/schemas/shows"
             }
           }
         ],
@@ -240,6 +215,7 @@
     },
     "/shows/{id}": {
       "get": {
+        "tags": ["TV SHOWS"],
         "description": "",
         "produces": [
           "application/json"
@@ -262,6 +238,7 @@
         }
       },
       "put": {
+        "tags": ["TV SHOWS"],
         "description": "",
         "parameters": [
           {
@@ -274,24 +251,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "seasonReleaseYear": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "season": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                }
-              }
+                "$ref": "#/components/schemas/shows"
             }
           }
         ],
@@ -311,6 +271,7 @@
         }
       },
       "delete": {
+        "tags": ["TV SHOWS"],
         "description": "",
         "parameters": [
           {
@@ -335,6 +296,7 @@
     },
     "/games/": {
       "get": {
+        "tags": ["GAMES"],
         "description": "",
         "produces": [
           "application/json"
@@ -350,33 +312,14 @@
         }
       },
       "post": {
+        "tags": ["GAMES"],
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "releaseYear": {
-                  "example": "any"
-                },
-                "platform": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "multiplayer": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/components/schemas/games"
             }
           }
         ],
@@ -395,6 +338,7 @@
     },
     "/games/{id}": {
       "get": {
+        "tags": ["GAMES"],
         "description": "",
         "produces": [
           "application/json"
@@ -417,6 +361,7 @@
         }
       },
       "put": {
+        "tags": ["GAMES"],
         "description": "",
         "parameters": [
           {
@@ -429,27 +374,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "releaseYear": {
-                  "example": "any"
-                },
-                "platform": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "multiplayer": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/components/schemas/games"
             }
           }
         ],
@@ -469,6 +394,7 @@
         }
       },
       "delete": {
+        "tags": ["GAMES"],
         "description": "",
         "parameters": [
           {
@@ -493,6 +419,7 @@
     },
     "/users/": {
       "get": {
+        "tags": ["USERS"],
         "description": "",
         "produces": [
           "application/json"
@@ -508,6 +435,7 @@
         }
       },
       "post": {
+        "tags": ["USERS"],
         "description": "",
         "parameters": [
           {
@@ -544,6 +472,7 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": ["USERS"],
         "description": "",
         "produces": [
           "application/json"
@@ -566,6 +495,7 @@
         }
       },
       "put": {
+        "tags": ["USERS"],
         "description": "",
         "parameters": [
           {
@@ -609,6 +539,7 @@
         }
       },
       "delete": {
+        "tags": ["USERS"],
         "description": "",
         "parameters": [
           {
@@ -633,6 +564,7 @@
     },
     "/auth/google": {
       "get": {
+        "tags": ["USERS"],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -640,6 +572,7 @@
     },
     "/auth/google/callback": {
       "get": {
+        "tags": ["USERS"],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -647,6 +580,7 @@
     },
     "/auth/dashboard": {
       "get": {
+        "tags": ["USERS"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -656,5 +590,90 @@
         }
       }
     }
+  },
+
+  "components": {
+      "schemas": {
+          "movies": {
+
+                "type": "object",
+                "properties": {
+                        "title": {
+                          "example": "Snow White and the Seven Dwarfs"
+                        },
+                        "releaseYear": {
+                          "example": 1937
+                        },
+                        "genre": {
+                          "example": "Fantasy"
+                        },
+                        "rating": {
+                          "example": "G"
+                        },
+                        "director": {
+                          "example": "David Hand"
+                        }
+                }
+
+          },
+          "shows": {
+
+                    "type": "object",
+                    "properties": {
+                            "title": {
+                              "example": "Stranger Things"
+                            },
+                            "season": {
+                              "example": 4
+                            },
+                            "rating": {
+                              "example": "TV-14"
+                            },
+                            "seasonReleaseYear": {
+                              "example": 2022
+                            },
+                            "genre": {
+                              "example": "Horror"
+                            }
+                    }
+
+
+          },
+
+          "games": {
+
+                    "type": "object",
+                    "properties": {
+                            "title": {
+                              "example": "Astroneer"
+                            },
+                            "size": {
+                              "example": "4 GB"
+                            },
+                            "multiplayer": {
+                              "example": true
+                            },
+                            "controllerSupport": {
+                              "example": true
+                            },
+                            "developer": {
+                              "example": "System Era Softworks"
+                            },
+                            "publisher": {
+                              "example": "System Era Softworks"
+                            },
+                            "releaseDate": {
+                              "example": "April 4, 2023"
+                            },
+                            "platform": {
+                              "example": "PC"
+                            }
+                    }
+
+          }
+      }
   }
+      
+
+
 }

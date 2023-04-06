@@ -7,38 +7,41 @@ let MovieController = function(endpoint) {
     this.endpoint = endpoint
 }
 
-MovieController.prototype.getAllGames = async function (req, res, next) {
+MovieController.prototype.getAllMovies = async function (req, res, next) {
     const MovieType = mongoose.model(this.endpoint, MovieSchema, this.endpoint);
     await getAll(MovieType, req ,res, next)
 }
 
-MovieController.prototype.getSingleGame = async function(req, res, next) {
+MovieController.prototype.getSingleMovie = async function(req, res, next) {
     const MovieType = mongoose.model(this.endpoint, MovieSchema, this.endpoint);
     await getSingle(MovieType, req ,res, next)
 }
 
-MovieController.prototype.createSingleGame = async function(req, res, next) {
+MovieController.prototype.createSingleMovie = async function(req, res, next) {
     const MovieType = mongoose.model(this.endpoint, MovieSchema, this.endpoint);
-    const game = new MovieType({
+    const movie = new MovieType({
         title: req.body.title,
-        size: req.body.size,
-        multiplayer: req.body.multiplayer,
-        controllerSupport: req.body.controllerSupport,
-        developer: req.body.developer,
-        publisher: req.body.publisher,
-        releaseDate: req.body.releaseDate,
-        platform: req.body.platform
+        releaseYear: req.body.releaseYear,
+        genre: req.body.genre,
+        rating: req.body.rating,
+        director: req.body.director
     })
-    await createSingle(game, req ,res, next)
+    await createSingle(movie, req ,res, next)
 }
 
-MovieController.prototype.updateSingleGame = async function(req, res, next) {
+MovieController.prototype.updateSingleMovie = async function(req, res, next) {
     const MovieType = mongoose.model(this.endpoint, MovieSchema, this.endpoint);
-
-    await updateSingle(MovieType, req ,res, next)
+    const movie = ({
+        title: req.body.title,
+        releaseYear: req.body.releaseYear,
+        genre: req.body.genre,
+        rating: req.body.rating,
+        director: req.body.director
+    })
+    await updateSingle(MovieType, movie, req ,res, next)
 }
 
-MovieController.prototype.deleteSingleGame = async function(req, res, next) {
+MovieController.prototype.deleteSingleMovie = async function(req, res, next) {
     const MovieType = mongoose.model(this.endpoint, MovieSchema, this.endpoint);
     await deleteSingle(MovieType, req ,res, next)
 }
@@ -50,7 +53,7 @@ module.exports = {
 }
 
 
-/* ************************************************** HELPER FUNCTIONS **************************************************  */
+
 
 
 

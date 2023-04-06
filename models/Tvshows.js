@@ -2,28 +2,25 @@ const mongoose = require("mongoose");
 
 
 const TvshowSchema = new mongoose.Schema({
-    googleId: {
+    title: {
         type: String,
         required: true
     },
-    displayName: {
+    season: {
+        type: Number,
+        required: true
+    },
+    rating: {
         type: String,
         required: true
     },
-    firstName: {
-        type: String,
+    seasonReleaseYear: {
+        type: Number,
         required: true
     },
-    lastName: {
+    genre: {
         type: String,
         required: true
-    },
-    image: {
-        type: String,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
 
 })

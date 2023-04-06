@@ -2,28 +2,24 @@ const mongoose = require('mongoose');
 
 
 const MovieSchema = new mongoose.Schema({
-    googleId: {
+    title: {
         type: String,
         required: true
     },
-    displayName: {
+    releaseYear: {
+        type: Number,
+        required: true
+    },
+    genre: {
         type: String,
         required: true
     },
-    firstName: {
+    rating: {
         type: String,
         required: true
     },
-    lastName: {
+    director: {
         type: String,
-        required: true
-    },
-    image: {
-        type: String,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
 
 })

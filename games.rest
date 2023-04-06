@@ -28,3 +28,62 @@ content-type: application/json
 
 DELETE http://localhost:8000/games/642e87c6f3646fe102160e3c
 
+
+###
+
+# Get all Movies information
+
+GET http://localhost:8000/movies
+
+###
+
+GET http://localhost:8000/movies/642e964a3e886ba6617db1dc
+
+###
+
+POST http://localhost:8000/movies
+content-type: application/json
+
+{"title":"La La Land","releaseYear":"2016","genre":"Drama","rating":"PG-13","director":"Damien Chazelle"}
+
+###
+
+PUT http://localhost:8000/movies/642e96b93e886ba6617db1e0
+content-type: application/json
+
+{"title":"La Lsdsdsdsdsa Land","releaseYear":"2016","genre":"Drama","rating":"PG-13","director":"Damien Chazelle"}
+
+###
+
+DELETE http://localhost:8000/movies/642e96b93e886ba6617db1e0
+
+
+###
+
+# Get all Movies information
+
+GET http://localhost:8000/shows
+
+###
+
+GET http://localhost:8000/shows/642eb62474b572f8f5f82b52
+
+###
+
+POST http://localhost:8000/shows
+content-type: application/json
+
+{"title":"The Office","season":"9","rating":"TV-14","seasonReleaseYear":"2013","genre":"Comedy"}
+
+###
+
+PUT http://localhost:8000/shows/642eb62474b572f8f5f82b52
+content-type: application/json
+
+{"title":"The Ofsddddddfice","season":"9","rating":"TV-14","seasonReleaseYear":"2013","genre":"Comedy"}
+
+###
+
+DELETE http://localhost:8000/shows/642eb62474b572f8f5f82b52
+
+

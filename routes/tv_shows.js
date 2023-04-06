@@ -1,16 +1,30 @@
 const express = require('express');
 const router = express.Router();
+const { TvShowController } = require('../controllers/tv_shows');
 
-const tvShowController = require('../controllers/tv_shows');
+router.get('/', (req, res, next) => {
+    let controller = new TvShowController('shows')
+    controller.getAllShows(req, res, next)
+});
 
-router.get('/', tvShowController.getAll);
+router.get('/:id', (req, res, next) => {
+    let controller = new TvShowController('shows')
+    controller.getSingleShow(req, res, next)
+});
 
-router.get('/:id', tvShowController.getSingle);
+router.post('/', (req, res, next) => {
+    let controller = new TvShowController('shows')
+    controller.createSingleShow(req, res, next)
+});
 
-router.post('/', tvShowController.addShow);
+router.put('/:id', (req, res, next) => {
+    let controller = new TvShowController('shows')
+    controller.updateSingleShow(req, res, next)
+});
 
-router.put('/:id', tvShowController.updateShow);
-
-router.delete('/:id', tvShowController.deleteShow);
+router.delete('/:id', (req, res, next) => {
+    let controller = new TvShowController('shows')
+    controller.deleteSingleShow(req, res, next)
+});
 
 module.exports = router;

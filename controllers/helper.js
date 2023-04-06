@@ -1,3 +1,5 @@
+/* ************************************************** HELPER FUNCTIONS **************************************************  */
+
 async function getAll(Schema, req ,res, next) {
     try {
         const games = await Schema.find()
@@ -27,7 +29,6 @@ async function createSingle(data, req ,res, next) {
 
 async function updateSingle(Schema, data, req ,res, next) {
     try {
-        console.log("_id: req.params.id updateSingle", {_id: req.params.id})
         const updatedgame = await Schema.updateOne({_id: req.params.id}, data)
         res.status(201).json(updatedgame)
     } catch (error) {
@@ -37,9 +38,8 @@ async function updateSingle(Schema, data, req ,res, next) {
 
 async function deleteSingle(Schema, req ,res, next) {
     try {
-        console.log("_id: req.params.id", {_id: req.params.id})
-        const game = await Schema.findOne({_id: req.params.id})
-        res.json(game)
+        const deletedGame = await Schema.findOneAndDelete({_id: req.params.id})
+        res.json(deletedGame)
     } catch (error) {
         res.status(400).json({message: error.message})
     }
