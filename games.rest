@@ -1,0 +1,30 @@
+// Localhost
+
+###
+
+# Get all video games information
+
+GET http://localhost:8000/games
+
+###
+
+GET http://localhost:8000/games/642e87c6f3646fe102160e3c
+
+###
+
+POST http://localhost:8000/games
+content-type: application/json
+
+{"title":"Inscryption","size":"3 GB","multiplayer":"false","controllerSupport":"false","developer":"Daniel Mullins Games","publisher":"Devolver Digital","releaseDate":"Oct 19, 2021","platform":"PC"}
+
+###
+
+PUT http://localhost:8000/games/642e87c6f3646fe102160e3c
+content-type: application/json
+
+{"title":"Inscryption","size":"3 GB","multiplayer":"false","controllerSupport":"false","developer":"Daniel Mullins Games","publisher":"Devolver Digital","releaseDate":"Oct 19, 2021","platform":"PC"}
+
+###
+
+DELETE http://localhost:8000/games/642e87c6f3646fe102160e3c
+
