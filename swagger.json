@@ -27,7 +27,11 @@
         {
             "name": "USERS",
             "description": "Requests using the USERS endpoint"
-        }
+        },
+        {
+          "name": "PROTECTED",
+          "description": "Requests using to PROTECTED endpoints"
+      }
   ],
   "paths": {
     "/": {
@@ -41,13 +45,53 @@
         }
       }
     },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
+
+    "/root-protected": {
+      "get":  {
+          "tags": ["PROTECTED"],
+          "description": "A PROTECTED route in ROOT endpoint",
+          "parameters": [],
+          "responses": {}
       }
     },
+
+    "/shows/tvshows-protected": {
+      "get":  {
+          "tags": ["PROTECTED"],
+          "description": "A PROTECTED route in TV SHOWS endpoint",
+          "parameters": [],
+          "responses": {}
+      }
+    },
+
+    "/games/games-protected": {
+      "get":  {
+          "tags": ["PROTECTED"],
+          "description": "A PROTECTED route in GAMES endpoint",
+          "parameters": [],
+          "responses": {}
+      }
+    },
+
+    "/movies/movies-protected": {
+      "get":  {
+          "tags": ["PROTECTED"],
+          "description": "A PROTECTED route in MOVIES endpoint",
+          "parameters": [],
+          "responses": {}
+      }
+    },
+
+    "/users/protected": {
+      "get":  {
+          "tags": ["PROTECTED"],
+          "description": "A protected route in users endpoint",
+          "parameters": [],
+          "responses": {}
+      }
+    },
+
+
     "/movies/": {
       "get": {
         "tags": ["MOVIES"],
@@ -417,179 +461,65 @@
         }
       }
     },
-    "/users/": {
-      "get": {
-        "tags": ["USERS"],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+
+    "/users/auth/google": {
+      "get":  {
+          "tags": ["USERS"],
+          "description": "google authentication login http://localhost:8000/users/auth/google or https://cse341-team6-project-v2.onrender.com/users/auth/google",
+          "parameters": [],
+          "responses": {}
+      }
+    },
+
+    "/users/logout": {
+      "get":  {
+          "tags": ["USERS"],
+          "description": "User Logout",
+          "parameters": [],
+          "responses": {}
+      }
+    },
+
+    "/users/register/": {
       "post": {
         "tags": ["USERS"],
-        "description": "",
+        "description": "Here is where user will register username and password.",
         "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "username": {
-                  "example": "any"
+            {
+                "name": "body",
+                "in": "body",
+                "required": true,
+                "schema": {
+                    "$ref": "#/components/schemas/user"
                 }
-              }
+                    
             }
-          }
         ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/users/{id}": {
-      "get": {
-        "tags": ["USERS"],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": ["USERS"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "username": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": ["USERS"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/auth/google": {
-      "get": {
-        "tags": ["USERS"],
-        "description": "",
-        "parameters": [],
         "responses": {}
       }
     },
-    "/auth/google/callback": {
-      "get": {
+
+    "/users/login/": {
+      "post": {
         "tags": ["USERS"],
-        "description": "",
-        "parameters": [],
+        "description": "Here is where user will login username and password.",
+        "parameters": [
+            {
+                "name": "body",
+                "in": "body",
+                "required": true,
+                "schema": {
+                    "$ref": "#/components/schemas/user"
+                }
+                    
+            }
+        ],
         "responses": {}
-      }
-    },
-    "/auth/dashboard": {
-      "get": {
-        "tags": ["USERS"],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     }
+
+
+
   },
 
   "components": {
@@ -669,6 +599,21 @@
                               "example": "PC"
                             }
                     }
+
+          },
+
+          "user": {
+
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "example": "greg azores"
+                    },
+
+                    "password": {
+                        "example": "password"
+                    }
+                }
 
           }
       }

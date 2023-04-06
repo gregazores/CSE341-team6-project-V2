@@ -18,19 +18,6 @@ TvShowController.prototype.getSingleShow = async function(req, res, next) {
 }
 
 TvShowController.prototype.createSingleShow = async function(req, res, next) {
-
-    if (!req.body.title || !req.body.season || !req.body.rating || !req.body.seasonReleaseYear || !req.body.genre) {
-        res.status(400).send({ message: 'Content can not be empty!' });
-        return;
-    }
-
-    const showEntries = await TvShowSchema.validateAsync(req.body)
-
-    if (showEntries.error) {
-      res.status(400).send({ message: showEntries.error });
-      return;
-    }
-
     const TvShowType = mongoose.model(this.endpoint, TvShowSchema, this.endpoint);
     const show = new TvShowType({
         title: req.body.title,
@@ -43,20 +30,6 @@ TvShowController.prototype.createSingleShow = async function(req, res, next) {
 }
 
 TvShowController.prototype.updateSingleShow = async function(req, res, next) {
-
-    if (!req.body.title || !req.body.season || !req.body.rating || !req.body.seasonReleaseYear || !req.body.genre) {
-        res.status(400).send({ message: 'Content can not be empty!' });
-        return;
-    }
-
-    const showEntries = await TvShowSchema.validateAsync(req.body)
-
-    if (showEntries.error) {
-      res.status(400).send({ message: showEntries.error });
-      return;
-    }
-
-    
     const TvShowType = mongoose.model(this.endpoint, TvShowSchema, this.endpoint);
     const show = ({
         title: req.body.title,

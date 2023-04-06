@@ -86,4 +86,18 @@ content-type: application/json
 
 DELETE http://localhost:8000/shows/642eb62474b572f8f5f82b52
 
+### LOGIN
+
+POST http://localhost:8000/users/login/
+content-type: application/json
+
+{
+  "username": "greg azores",
+  "password": "password"
+}
+
+
+### PROTECTED ROUTES
+GET http://localhost:8000/users/protected/
+
 

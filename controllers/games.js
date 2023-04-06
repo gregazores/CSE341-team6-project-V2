@@ -18,6 +18,19 @@ GamesController.prototype.getSingleGame = async function(req, res, next) {
 }
 
 GamesController.prototype.createSingleGame = async function(req, res, next) {
+
+    if (!req.body.title || !req.body.size || !req.body.multiplayer || !req.body.controllerSupport || !req.body.developer || !req.body.publisher || !req.body.releaseDate || !req.body.platform) {
+        res.status(400).send({ message: 'Content can not be empty!' });
+        return;
+    }
+
+    const gameEntries = await GameSchema.validateAsync(req.body)
+
+    if (gameEntries.error) {
+      res.status(400).send({ message: gameEntries.error });
+      return;
+    }
+
     const GameType = mongoose.model(this.endpoint, GameSchema, this.endpoint);
     const game = new GameType({
         title: req.body.title,
@@ -33,6 +46,19 @@ GamesController.prototype.createSingleGame = async function(req, res, next) {
 }
 
 GamesController.prototype.updateSingleGame = async function(req, res, next) {
+
+    if (!req.body.title || !req.body.size || !req.body.multiplayer || !req.body.controllerSupport || !req.body.developer || !req.body.publisher || !req.body.releaseDate || !req.body.platform) {
+        res.status(400).send({ message: 'Content can not be empty!' });
+        return;
+    }
+
+    const gameEntries = await GameSchema.validateAsync(req.body)
+
+    if (gameEntries.error) {
+      res.status(400).send({ message: gameEntries.error });
+      return;
+    }
+    
     const GameType = mongoose.model(this.endpoint, GameSchema, this.endpoint);
     const game = ({
         title: req.body.title,

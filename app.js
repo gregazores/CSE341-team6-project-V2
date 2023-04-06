@@ -3,9 +3,9 @@ const app = express();
 const router = require('./routes');
 const mongodb = require('./db/connect');
 const port = process.env.PORT || 8000;
-//Oauth
-const session = require("express-session");
+require("./config/passport")
 
+//app.set('trust proxy', 1) // trust first proxy
 
 //so we can access the body contents inside request and response
 app.use(express.urlencoded({extended: false}))
@@ -16,6 +16,7 @@ app.use(express.json())
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', '*');
     res.setHeader('Access-Control-Allow-Origin', '*');
+    //res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader(
       "Access-Control-Allow-Methods",
       "OPTIONS, GET, POST, PUT, PATCH, DELETE"
